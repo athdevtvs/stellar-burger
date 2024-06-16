@@ -15,8 +15,18 @@ import {
 import { AppHeader, ProtectedRoute, Modal, OrderInfo } from '@components';
 
 import { Route, Routes } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../services/store';
+import { useEffect } from 'react';
+import { getIngredients } from '@slices';
 
 const App = () => {
+  const dispatch: AppDispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    dispatch(getIngredients());
+  }, []);
+
   const handleCloseFeed = () => {};
 
   return (
