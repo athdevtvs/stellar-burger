@@ -1,3 +1,3 @@
-export * from './ingredients-slice';
-export * from './order-slice';
-export * from './burger-constructor-slice';
+export * from './ingredients';
+export * from './order';
+export * from './burger-constructor';
