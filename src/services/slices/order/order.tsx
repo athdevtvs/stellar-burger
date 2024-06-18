@@ -61,9 +61,9 @@ export const orderSlice = createSlice({
   },
   selectors: {
     selectorOrder: (state) => state.data,
-    selectorRequest: (state) => state.request
+    selectorOrderRequest: (state) => state.request
   }
 });
 
-export const { selectorOrder, selectorRequest } = orderSlice.selectors;
 export const { clearOrder } = orderSlice.actions;
+export const { selectorOrder, selectorOrderRequest } = orderSlice.selectors;

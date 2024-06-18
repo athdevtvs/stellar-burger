@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from '../../services/store';
 import {
   selectorIngredients,
   selectorOrder,
-  selectorRequest,
+  selectorOrderRequest,
   clearOrder,
   selectorConstructorItems
 } from '@slices';
@@ -16,7 +16,7 @@ export const BurgerConstructor: FC = () => {
 
   const constructorItems = useSelector(selectorConstructorItems);
 
-  const orderRequest = useSelector(selectorRequest);
+  const orderRequest = useSelector(selectorOrderRequest);
   const orderModalData = useSelector(selectorOrder);
 
   /*const constructorItems = {

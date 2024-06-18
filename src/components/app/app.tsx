@@ -13,18 +13,18 @@ import {
   ProfileOrders
 } from '@pages';
 import { AppHeader, ProtectedRoute, Modal, OrderInfo } from '@components';
-
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../services/store';
 import { useEffect } from 'react';
-import { getIngredients } from '@slices';
+import { AppDispatch } from '../../services/store';
+import { getIngredients, checkUserAuth } from '@slices';
 
 const App = () => {
   const dispatch: AppDispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(getIngredients());
+    dispatch(checkUserAuth());
   }, []);
 
   const handleCloseFeed = () => {};
@@ -40,7 +40,7 @@ const App = () => {
           <Route
             path='/login'
             element={
-              <ProtectedRoute>
+              <ProtectedRoute onlyUnAuth>
                 <Login />
               </ProtectedRoute>
             }
@@ -48,7 +48,7 @@ const App = () => {
           <Route
             path='/register'
             element={
-              <ProtectedRoute>
+              <ProtectedRoute onlyUnAuth>
                 <Register />
               </ProtectedRoute>
             }
@@ -56,7 +56,7 @@ const App = () => {
           <Route
             path='/forgot-password'
             element={
-              <ProtectedRoute>
+              <ProtectedRoute onlyUnAuth>
                 <ForgotPassword />
               </ProtectedRoute>
             }
@@ -64,7 +64,7 @@ const App = () => {
           <Route
             path='/reset-password'
             element={
-              <ProtectedRoute>
+              <ProtectedRoute onlyUnAuth>
                 <ResetPassword />
               </ProtectedRoute>
             }
@@ -105,7 +105,10 @@ const App = () => {
             path='/profile/orders/:number'
             element={
               <ProtectedRoute>
-                <Modal title='/ingredients/:id' onClose={handleCloseFeed}>
+                <Modal
+                  title='/profile/orders/:number'
+                  onClose={handleCloseFeed}
+                >
                   <OrderInfo />
                 </Modal>
               </ProtectedRoute>
