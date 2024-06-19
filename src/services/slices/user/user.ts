@@ -51,8 +51,13 @@ const getUser = createAsyncThunk('user/get', async () => getUserApi());
 export const checkUserAuth = createAsyncThunk(
   'user/checkAuth',
   async (_, { dispatch }) => {
+    if (getCookie('accessToken')) {
+      dispatch(getUser()).finally(() => {
+        dispatch(authChecked());
+      });
+    } else {
     dispatch(authChecked());
-  }
+    }
 );
 
 export const userSlice = createSlice({
