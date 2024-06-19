@@ -5,10 +5,10 @@ import {
   TLoginData,
   registerUserApi,
   loginUserApi,
-  getUserApi
+  getUserApi,
+  logoutApi
 } from '@api';
-import { setCookie, getCookie } from '../../../utils/cookie';
-//import { registerUser, loginUser } from '@slices';
+import { setCookie, getCookie, deleteCookie } from '../../../utils/cookie';
 
 type UserState = {
   data: TUser | null;
@@ -56,8 +56,13 @@ export const checkUserAuth = createAsyncThunk(
         dispatch(authChecked());
       });
     } else {
-    dispatch(authChecked());
+      dispatch(authChecked());
     }
+  }
+);
+
+export const logoutUser = createAsyncThunk('user/logout', async () =>
+  logoutApi()
 );
 
 export const userSlice = createSlice({
@@ -104,6 +109,18 @@ export const userSlice = createSlice({
       })
       .addCase(getUser.fulfilled, (state, action) => {
         state.data = action.payload.user;
+      })
+      .addCase(logoutUser.pending, (state) => {
+        state.request = true;
+      })
+      .addCase(logoutUser.fulfilled, (state) => {
+        state.data = null;
+        state.request = false;
+        localStorage.clear();
+        deleteCookie('accessToken');
+      })
+      .addCase(logoutUser.rejected, (state) => {
+        state.request = false;
       });
   },
   selectors: {
