@@ -11,3 +11,4 @@ export { registerUser } from './user';
 export { loginUser } from './user';
 export { checkUserAuth } from './user';
 export { logoutUser } from './user';
+export { updateUser } from './user';
