@@ -33,10 +33,6 @@ const App = () => {
 
   const handleCloseFeed = () => {};
 
-  const handleCloseProfileOrderModal = () => {
-    navigate('./profile/orders');
-  };
-
   return (
     <>
       <div className={styles.app}>
@@ -104,7 +100,13 @@ const App = () => {
           <Route
             path='/ingredients/:id'
             element={
-              <Modal title='/ingredients/:id' onClose={handleCloseFeed}>
+              <Modal
+                title='Детали ингридиента'
+                onClose={() => {
+                  navigate('/');
+                  dispatch(clearOrder());
+                }}
+              >
                 <OrderInfo />
               </Modal>
             }
@@ -116,7 +118,7 @@ const App = () => {
                 <Modal
                   title={`Заказ №${orderId}`}
                   onClose={() => {
-                    handleCloseProfileOrderModal;
+                    navigate('./profile/orders');
                     dispatch(clearOrder());
                   }}
                 >
