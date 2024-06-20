@@ -15,7 +15,6 @@ import {
 } from '@slices';
 
 export const BurgerConstructor: FC = () => {
-  /** IN_PROGRESS: взять переменные constructorItems, orderRequest и orderModalData из стора */
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

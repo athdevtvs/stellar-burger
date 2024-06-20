@@ -6,7 +6,6 @@ import { useSelector, useDispatch } from '../../services/store';
 import { selectorFeedOrders, getFeed } from '@slices';
 
 export const Feed: FC = () => {
-  /** DONE: взять переменную из стора */
   const orders: TOrder[] = useSelector(selectorFeedOrders);
   const dispatch = useDispatch();
 

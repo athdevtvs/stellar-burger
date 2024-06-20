@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from '../../services/store';
 import { getOrderByNumber, selectorOrder, selectorIngredients } from '@slices';
 
 export const OrderInfo: FC = () => {
-  /** IN_PROGRESS: взять переменные orderData и ingredients из стора */
   const orderId = Number(useParams().number);
   const dispatch = useDispatch();
 

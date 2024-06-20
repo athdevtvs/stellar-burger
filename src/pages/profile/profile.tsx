@@ -4,7 +4,6 @@ import { useSelector, RootState, useDispatch } from '../../services/store';
 import { updateUser } from '@slices';
 
 export const Profile: FC = () => {
-  /** IN_PROGRESS: взять переменную из стора */
   const userState = useSelector((state: RootState) => state.user);
   const user = userState.data || { name: '', email: '' };
   const dispatch = useDispatch();
