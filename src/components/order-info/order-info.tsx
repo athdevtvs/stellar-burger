@@ -19,7 +19,7 @@ export const OrderInfo: FC = () => {
 
   const ingredients: TIngredient[] = useSelector(
     selectorIngredients.selectorIngredientsData
-  ); //.filter((item) => orderData?.ingredients.includes(item._id));
+  ).filter((item) => orderData?.ingredients.includes(item._id));
 
   /* Готовим данные для отображения */
   const orderInfo = useMemo(() => {

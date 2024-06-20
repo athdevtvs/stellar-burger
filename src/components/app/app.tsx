@@ -18,6 +18,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { AppDispatch } from '../../services/store';
 import { getIngredients, checkUserAuth, clearOrder } from '@slices';
+import { IngredientDetails } from '@components';
 
 const App = () => {
   const location = useLocation();
@@ -32,6 +33,16 @@ const App = () => {
   }, []);
 
   const handleCloseFeed = () => {};
+
+  const handleCloseProfileOrderModal = () => {
+    navigate('./profile/orders');
+    dispatch(clearOrder());
+  };
+
+  const handleCloseIngridients = () => {
+    navigate('/');
+    dispatch(clearOrder());
+  };
 
   return (
     <>
@@ -102,12 +113,9 @@ const App = () => {
             element={
               <Modal
                 title='Детали ингридиента'
-                onClose={() => {
-                  navigate('/');
-                  dispatch(clearOrder());
-                }}
+                onClose={handleCloseIngridients}
               >
-                <OrderInfo />
+                <IngredientDetails />
               </Modal>
             }
           />
@@ -117,10 +125,7 @@ const App = () => {
               <ProtectedRoute>
                 <Modal
                   title={`Заказ №${orderId}`}
-                  onClose={() => {
-                    navigate('./profile/orders');
-                    dispatch(clearOrder());
-                  }}
+                  onClose={handleCloseProfileOrderModal}
                 >
                   <OrderInfo />
                 </Modal>
