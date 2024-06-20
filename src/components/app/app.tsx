@@ -17,7 +17,7 @@ import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { AppDispatch } from '../../services/store';
-import { getIngredients, checkUserAuth } from '@slices';
+import { getIngredients, checkUserAuth, clearOrder } from '@slices';
 
 const App = () => {
   const location = useLocation();
@@ -115,7 +115,10 @@ const App = () => {
               <ProtectedRoute>
                 <Modal
                   title={`Заказ №${orderId}`}
-                  onClose={handleCloseProfileOrderModal}
+                  onClose={() => {
+                    handleCloseProfileOrderModal;
+                    dispatch(clearOrder());
+                  }}
                 >
                   <OrderInfo />
                 </Modal>
