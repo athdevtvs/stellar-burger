@@ -13,7 +13,7 @@ const getOrders = (orders: TOrder[], status: string): number[] =>
     .slice(0, 20);
 
 export const FeedInfo: FC = () => {
-  /** IN_PROGRESS: взять переменные из стора */
+  /** DONE: взять переменные из стора */
   const { orders, totalData } = useSelector(selectorFeed);
   const feed = totalData;
 

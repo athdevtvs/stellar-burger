@@ -23,12 +23,6 @@ export const BurgerConstructor: FC = () => {
   const orderRequest = useSelector(selectorOrderRequest);
   const orderModalData = useSelector(selectorOrder);
   const user = useSelector(selectorUserData);
-  /*const constructorItems = {
-    bun: {
-      price: 0
-    },
-    ingredients: []
-  };*/
 
   const onOrderClick = () => {
     if (!constructorItems.bun || orderRequest) return;
@@ -40,8 +34,11 @@ export const BurgerConstructor: FC = () => {
 
     const ingredientIds = [
       constructorItems.bun._id,
-      ...constructorItems.ingredients.map((item) => item._id)
+      ...constructorItems.ingredients.map(
+        (item: TConstructorIngredient) => item._id
+      )
     ];
+
     dispatch(orderBurger(ingredientIds)).then(() => {
       dispatch(clearConstructor());
     });

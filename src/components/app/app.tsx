@@ -14,17 +14,16 @@ import {
 } from '@pages';
 import { AppHeader, ProtectedRoute, Modal, OrderInfo } from '@components';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { AppDispatch } from '../../services/store';
+import { useDispatch } from '../../services/store';
 import { getIngredients, checkUserAuth, clearOrder } from '@slices';
 import { IngredientDetails } from '@components';
 
 const App = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const dispatch: AppDispatch = useDispatch<AppDispatch>();
   const orderId = location.pathname.split('/').at(3);
   const feedId = location.pathname.split('/').at(2);
 

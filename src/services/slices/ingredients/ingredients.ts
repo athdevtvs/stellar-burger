@@ -5,11 +5,13 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 type TIngredientState = {
   data: TIngredient[];
+  isLoading: boolean;
   status: RequestStatus;
 };
 
 const initialState: TIngredientState = {
   data: [],
+  isLoading: false,
   status: RequestStatus.Idle
 };
 
@@ -36,8 +38,9 @@ export const ingredientsSlice = createSlice({
       });
   },
   selectors: {
-    selectorIngredientsData: (state: TIngredientState) => state.data,
-    selectorIngredientsStatus: (state: TIngredientState) => state.status
+    selectorIngredientsData: (state) => state.data,
+    selectorIngredientsStatus: (state) => state.status,
+    selectorIsLoading: (state) => state.isLoading
   }
 });
 
