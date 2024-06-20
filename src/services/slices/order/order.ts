@@ -12,7 +12,7 @@ const initialState: TOrderState = {
   request: false
 };
 
-const orderBurger = createAsyncThunk(
+export const orderBurger = createAsyncThunk(
   'order/post',
   async (dataId: string[], { dispatch }) => {
     dispatch(clearOrder());
@@ -20,7 +20,7 @@ const orderBurger = createAsyncThunk(
   }
 );
 
-const getOrderByNumber = createAsyncThunk(
+export const getOrderByNumber = createAsyncThunk(
   'order/getByNumber',
   async (orderNumber: number, { dispatch }) => {
     dispatch(clearOrder());
