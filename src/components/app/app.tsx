@@ -62,7 +62,14 @@ const App = () => {
         <Routes location={backgroundLocation || location}>
           <Route path='*' element={<NotFound404 />} />
           <Route path='/' element={<ConstructorPage />} />
-          <Route path='/feed' element={<Feed />} />
+          <Route
+            path='/feed'
+            element={
+              <ProtectedRoute>
+                <Feed />
+              </ProtectedRoute>
+            }
+          />
           <Route
             path='/login'
             element={
@@ -136,12 +143,14 @@ const App = () => {
           <Route
             path='/profile/orders/:number'
             element={
-              <div className={styles.detailPageWrap}>
-                <h3 className={`${styles.title} text text_type_main-large`}>
-                  {`#${orderId?.padStart(6, '0')}`}
-                </h3>
-                <OrderInfo />
-              </div>
+              <ProtectedRoute>
+                <div className={styles.detailPageWrap}>
+                  <h3 className={`${styles.title} text text_type_main-large`}>
+                    {`#${orderId?.padStart(6, '0')}`}
+                  </h3>
+                  <OrderInfo />
+                </div>
+              </ProtectedRoute>
             }
           />
         </Routes>

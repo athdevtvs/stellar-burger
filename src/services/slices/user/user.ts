@@ -70,8 +70,14 @@ export const checkUserAuth = createAsyncThunk(
   }
 );
 
-export const logoutUser = createAsyncThunk('user/logout', async () =>
-  logoutApi()
+export const logoutUser = createAsyncThunk(
+  'user/logout',
+  async (_, { dispatch }) =>
+    logoutApi().then(() => {
+      localStorage.clear();
+      deleteCookie('accessToken');
+      dispatch(userLogout());
+    })
 );
 
 export const updateUser = createAsyncThunk(
@@ -128,10 +134,7 @@ export const userSlice = createSlice({
         state.request = true;
       })
       .addCase(logoutUser.fulfilled, (state) => {
-        state.data = null;
         state.request = false;
-        localStorage.clear();
-        deleteCookie('accessToken');
       })
       .addCase(logoutUser.rejected, (state) => {
         state.request = false;

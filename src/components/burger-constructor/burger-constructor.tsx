@@ -27,7 +27,7 @@ export const BurgerConstructor: FC = () => {
     if (!constructorItems.bun || orderRequest) return;
 
     if (!user) {
-      navigate('/login', { replace: true });
+      navigate('/login');
       return;
     }
 

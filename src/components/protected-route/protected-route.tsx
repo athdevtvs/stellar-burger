@@ -1,8 +1,8 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useLocation, Navigate } from 'react-router-dom';
 import { ProtectedRouteProps } from './type';
 import { useDispatch, useSelector } from '../../services/store';
-import { selectorIsAuthChecked, selectorUserData } from '@slices';
+import { selectorIsAuthChecked, selectorUserData, getOrders } from '@slices';
 import { Preloader } from '../ui/preloader';
 
 export const ProtectedRoute: FC<ProtectedRouteProps> = ({
@@ -12,6 +12,14 @@ export const ProtectedRoute: FC<ProtectedRouteProps> = ({
   const location = useLocation();
   const isAuthChecked = useSelector(selectorIsAuthChecked);
   const user = useSelector(selectorUserData);
+
+  /*const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (user) {
+      dispatch(getOrders());
+    }
+  });*/
 
   if (!isAuthChecked) {
     return <Preloader />;
