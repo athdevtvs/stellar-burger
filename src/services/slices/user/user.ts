@@ -32,16 +32,24 @@ const initialState: UserState = {
 export const registerUser = createAsyncThunk<
   TUser,
   { name: string; email: string; password: string }
->('user/register', async (user) => {
-  const data = await registerUserApi(user);
+>('user/register', async (userData: TRegisterData, { rejectWithValue }) => {
+  const data = await registerUserApi(userData);
+  if (!data?.success) {
+    return rejectWithValue(data);
+  }
+  setCookie('accessToken', data.accessToken);
+  localStorage.setItem('refreshToken', data.refreshToken);
   return data.user;
 });
 
 export const loginUser = createAsyncThunk<
   TUser,
   { email: string; password: string }
->('user/loginUser', async (user) => {
-  const data = await loginUserApi(user);
+>('user/loginUser', async (userData: TLoginData, { rejectWithValue }) => {
+  const data = await loginUserApi(userData);
+  if (!data?.success) {
+    return rejectWithValue(data);
+  }
   setCookie('accessToken', data.accessToken);
   localStorage.setItem('refreshToken', data.refreshToken);
   return data.user;
@@ -68,7 +76,7 @@ export const logoutUser = createAsyncThunk('user/logout', async () =>
 
 export const updateUser = createAsyncThunk(
   'user/update',
-  async (newData: Partial<TRegisterData>) => updateUserApi(newData)
+  async (newUserData: Partial<TRegisterData>) => updateUserApi(newUserData)
 );
 
 export const userSlice = createSlice({
@@ -127,6 +135,17 @@ export const userSlice = createSlice({
       })
       .addCase(logoutUser.rejected, (state) => {
         state.request = false;
+      })
+      .addCase(updateUser.pending, (state) => {
+        state.request = true;
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.data = action.payload.user;
+        state.request = false;
+      })
+      .addCase(updateUser.rejected, (state, action) => {
+        state.request = false;
+        state.updateError = action.error.message || '';
       });
   },
   selectors: {
