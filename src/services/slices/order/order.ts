@@ -16,7 +16,7 @@ export const orderBurger = createAsyncThunk(
   'order/post',
   async (dataId: string[], { dispatch }) => {
     dispatch(clearOrder());
-    return await orderBurgerApi(dataId);
+    return orderBurgerApi(dataId);
   }
 );
 
