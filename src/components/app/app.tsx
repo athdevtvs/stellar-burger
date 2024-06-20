@@ -13,14 +13,18 @@ import {
   ProfileOrders
 } from '@pages';
 import { AppHeader, ProtectedRoute, Modal, OrderInfo } from '@components';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { AppDispatch } from '../../services/store';
 import { getIngredients, checkUserAuth } from '@slices';
 
 const App = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const dispatch: AppDispatch = useDispatch<AppDispatch>();
+  const orderId = location.pathname.split('/').at(3);
 
   useEffect(() => {
     dispatch(getIngredients());
@@ -28,6 +32,10 @@ const App = () => {
   }, []);
 
   const handleCloseFeed = () => {};
+
+  const handleCloseProfileOrderModal = () => {
+    navigate('./profile/orders');
+  };
 
   return (
     <>
@@ -106,8 +114,8 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <Modal
-                  title='/profile/orders/:number'
-                  onClose={handleCloseFeed}
+                  title={`Заказ №${orderId}`}
+                  onClose={handleCloseProfileOrderModal}
                 >
                   <OrderInfo />
                 </Modal>
