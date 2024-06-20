@@ -111,13 +111,49 @@ const App = () => {
               </ProtectedRoute>
             }
           />
+          <Route
+            path='/feed/:number'
+            element={
+              <div className={styles.detailPageWrap}>
+                <h3 className={`${styles.title} text text_type_main-large`}>
+                  {`#${feedId?.padStart(6, '0')}`}
+                </h3>
+                <OrderInfo />
+              </div>
+            }
+          />
+          <Route
+            path='/ingredients/:id'
+            element={
+              <div className={styles.detailPageWrap}>
+                <h3 className={`${styles.title} text text_type_main-large`}>
+                  Детали ингридиента
+                </h3>
+                <IngredientDetails />
+              </div>
+            }
+          />
+          <Route
+            path='/profile/orders/:number'
+            element={
+              <div className={styles.detailPageWrap}>
+                <h3 className={`${styles.title} text text_type_main-large`}>
+                  {`#${orderId?.padStart(6, '0')}`}
+                </h3>
+                <OrderInfo />
+              </div>
+            }
+          />
         </Routes>
         {backgroundLocation && (
           <Routes>
             <Route
               path='/feed/:number'
               element={
-                <Modal title={`Заказ №${feedId}`} onClose={handleCloseFeed}>
+                <Modal
+                  title={`#${feedId?.padStart(6, '0')}`}
+                  onClose={handleCloseFeed}
+                >
                   <OrderInfo />
                 </Modal>
               }
@@ -138,7 +174,7 @@ const App = () => {
               element={
                 <ProtectedRoute>
                   <Modal
-                    title={`Заказ №${orderId}`}
+                    title={`#${orderId?.padStart(6, '0')}`}
                     onClose={handleCloseProfileOrderModal}
                   >
                     <OrderInfo />
