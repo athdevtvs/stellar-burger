@@ -26,13 +26,17 @@ const App = () => {
 
   const dispatch: AppDispatch = useDispatch<AppDispatch>();
   const orderId = location.pathname.split('/').at(3);
+  const feedId = location.pathname.split('/').at(2);
 
   useEffect(() => {
     dispatch(getIngredients());
     dispatch(checkUserAuth());
   }, []);
 
-  const handleCloseFeed = () => {};
+  const handleCloseFeed = () => {
+    navigate('./feed');
+    dispatch(clearOrder());
+  };
 
   const handleCloseProfileOrderModal = () => {
     navigate('./profile/orders');
@@ -103,7 +107,7 @@ const App = () => {
           <Route
             path='/feed/:number'
             element={
-              <Modal title='/feed/:number' onClose={handleCloseFeed}>
+              <Modal title={`Заказ №${feedId}`} onClose={handleCloseFeed}>
                 <OrderInfo />
               </Modal>
             }
