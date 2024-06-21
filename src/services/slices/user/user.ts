@@ -55,7 +55,7 @@ export const loginUser = createAsyncThunk<
   return data.user;
 });
 
-const getUser = createAsyncThunk('user/get', async () => getUserApi());
+const getUser = createAsyncThunk('user/get', getUserApi);
 
 export const checkUserAuth = createAsyncThunk(
   'user/checkAuth',

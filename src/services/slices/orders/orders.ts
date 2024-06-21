@@ -12,9 +12,7 @@ const initialState: IOrdersState = {
   request: false
 };
 
-export const getOrders = createAsyncThunk('order/get', async () =>
-  getOrdersApi()
-);
+export const getOrders = createAsyncThunk('order/get', getOrdersApi);
 
 export const ordersSlice = createSlice({
   name: 'orders',

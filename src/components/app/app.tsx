@@ -62,14 +62,7 @@ const App = () => {
         <Routes location={backgroundLocation || location}>
           <Route path='*' element={<NotFound404 />} />
           <Route path='/' element={<ConstructorPage />} />
-          <Route
-            path='/feed'
-            element={
-              <ProtectedRoute>
-                <Feed />
-              </ProtectedRoute>
-            }
-          />
+          <Route path='/feed' element={<Feed />} />
           <Route
             path='/login'
             element={
