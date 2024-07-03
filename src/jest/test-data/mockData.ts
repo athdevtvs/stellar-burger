@@ -1,5 +1,5 @@
 import { nanoid } from '@reduxjs/toolkit';
-import { TIngredient, TConstructorIngredient } from '@utils-types';
+import { TIngredient, TConstructorIngredient, TOrder } from '@utils-types';
 import { TBurgerConstructorState } from '@slices';
 
 export const newBioPattyItem: TIngredient = {
@@ -285,3 +285,41 @@ export const bun: TConstructorIngredient = {
   image_mobile: 'https://code.s3.yandex.net/react/code/bun-02-mobile.png',
   image_large: 'https://code.s3.yandex.net/react/code/bun-02-large.png'
 };
+
+export const allOrders: TOrder[] = [
+  {
+    _id: '667d0a7d856777001bb1e23e',
+    ingredients: [
+      '643d69a5c3f7b9001cfa093c',
+      '643d69a5c3f7b9001cfa0941',
+      '643d69a5c3f7b9001cfa0946'
+    ],
+    name: 'Краторный минеральный био-марсианский бургер',
+    number: 44432,
+    status: 'done',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    _id: '667ce7a3856777001bb1e215',
+    ingredients: ['643d69a5c3f7b9001cfa093e', '643d69a5c3f7b9001cfa093d'],
+    name: 'Флюоресцентный люминесцентный бургер',
+    number: 44431,
+    status: 'done',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    _id: '667cdfea856777001bb1e205',
+    ingredients: [
+      '643d69a5c3f7b9001cfa0941',
+      '643d69a5c3f7b9001cfa093f',
+      '643d69a5c3f7b9001cfa093d'
+    ],
+    name: 'Флюоресцентный био-марсианский бессмертный бургер',
+    number: 44430,
+    status: 'done',
+    createdAt: '2024-04-27T03:43:38.869Z',
+    updatedAt: '2024-04-27T03:43:39.242Z'
+  }
+];
