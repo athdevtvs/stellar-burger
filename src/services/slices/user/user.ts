@@ -20,7 +20,7 @@ type UserState = {
   updateError: string;
 };
 
-const initialState: UserState = {
+export const initialState: UserState = {
   data: null,
   isAuthChecked: false,
   request: false,
@@ -55,7 +55,7 @@ export const loginUser = createAsyncThunk<
   return data.user;
 });
 
-const getUser = createAsyncThunk('user/get', getUserApi);
+export const getUser = createAsyncThunk('user/get', getUserApi);
 
 export const checkUserAuth = createAsyncThunk(
   'user/checkAuth',

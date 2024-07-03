@@ -362,3 +362,17 @@ export const currentOrder = {
   },
   request: true
 };
+
+export const user = {
+  email: 'test@test.com',
+  name: 'test'
+};
+
+export const authedUser = {
+  data: user,
+  isAuthChecked: true,
+  request: false,
+  loginError: '',
+  registerError: '',
+  updateError: ''
+};

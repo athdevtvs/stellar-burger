@@ -10,5 +10,7 @@ export { selectorUpdateError } from './user';
 export { registerUser } from './user';
 export { loginUser } from './user';
 export { checkUserAuth } from './user';
+export { getUser } from './user';
 export { logoutUser } from './user';
 export { updateUser } from './user';
+export { initialState as userInitialState } from './user';
