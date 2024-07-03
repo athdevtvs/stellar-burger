@@ -323,3 +323,42 @@ export const allOrders: TOrder[] = [
     updatedAt: '2024-04-27T03:43:39.242Z'
   }
 ];
+
+export const newOrder = {
+  success: true,
+  name: 'Краторный минеральный био-марсианский бургер',
+  order: {
+    ingredients: [newBioPattyItem, newCrispyMineralRingsItem, newBunItem],
+    _id: '66805e72856777001bb1eadc',
+    owner: {
+      name: 'TVs',
+      email: 'vaganova.tanya@gmail.com',
+      createdAt: '2024-06-18T18:42:36.010Z',
+      updatedAt: '2024-06-20T20:59:27.194Z'
+    },
+    status: 'done',
+    name: 'Краторный минеральный био-марсианский бургер',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+    number: 44774,
+    price: 1979
+  }
+};
+
+export const currentOrder = {
+  data: {
+    _id: '6683bb89856777001bb1f115',
+    ingredients: [
+      newBioPattyItem._id,
+      newCrispyMineralRingsItem._id,
+      newBunItem._id
+    ],
+    owner: '6671d51c856777001bb1bea6',
+    status: 'done',
+    name: 'Краторный минеральный био-марсианский бургер',
+    createdAt: '2024-07-02T08:34:17.526Z',
+    updatedAt: '2024-07-02T08:34:17.925Z',
+    number: 44774
+  },
+  request: true
+};
