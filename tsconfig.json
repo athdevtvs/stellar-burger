@@ -29,5 +29,5 @@
       "@selectors": ["src/services/selectors"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "jest/__tests__", "jest/test-data"]
 }

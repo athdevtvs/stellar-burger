@@ -1,4 +1,4 @@
-import { rootReducer } from '../../services/store';
+import { rootReducer } from '../../src/services/store';
 import {
   ingredientsSlice,
   orderSlice,
