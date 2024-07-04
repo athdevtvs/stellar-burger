@@ -1,7 +1,7 @@
 import { App } from './app';
 import { bunOneName } from './constants';
 
-describe('Modal window functionality', () => {
+describe('modal window functionality', () => {
   beforeEach(() => {
     App.visit();
     cy.get(`[data-cy="ingredients-list-${bunOneName}"]`).click();

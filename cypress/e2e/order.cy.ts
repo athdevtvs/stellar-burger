@@ -10,7 +10,7 @@ import {
   souceName
 } from './constants';
 
-describe('Modal window functionality', () => {
+describe('order functionality', () => {
   before(() => {
     App.visit();
     localStorage.setItem('refreshToken', JSON.stringify(tokens.refreshToken));
