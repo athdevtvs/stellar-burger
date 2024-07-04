@@ -1,0 +1,16 @@
+{
+  "username": "username",
+  "password": "password",
+  "inputErrorMessageText": "Invalid username or password.",
+  "homePageWelcomeText": "Welcome, bla bla bla",
+  "testCases": [
+    {
+      "id": 2,
+      "name": "Начинки"
+    },
+    {
+      "id": 3,
+      "name": "Соусы"
+    }
+  ]
+}
