@@ -3,7 +3,7 @@
   "password": "password",
   "inputErrorMessageText": "Invalid username or password.",
   "homePageWelcomeText": "Welcome, bla bla bla",
-  "testCases": [
+  "autoscrollTestCases": [
     {
       "id": 2,
       "name": "Начинки"
