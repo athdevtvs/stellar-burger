@@ -12,13 +12,11 @@ describe('Modal window functionality', () => {
   });
 
   it('close dialog by click on X button', () => {
-    App.findModal().should('exist').find('[data-cy=close-button]').click();
-    cy.get('[data-cy="modal"]').should('not.exist');
+    App.findModal().should('exist').closeModalByButton().should('not.exist');
   });
 
   it('close dialog by click on overlay', () => {
-    App.findModal().should('exist');
-    cy.get('body').click(0, 0);
+    App.findModal().should('exist').closeModalByOverlay();
     App.findModal().should('not.exist');
   });
 });

@@ -1,7 +1,5 @@
 export class App {
   static visit() {
-    //cy.clearCookies();
-    //cy.clearLocalStorage();
     cy.visit('/');
     cy.intercept('GET', '**/api/ingredients', {
       fixture: 'ingredients.json'
@@ -12,5 +10,9 @@ export class App {
 
   static findModal() {
     return cy.get(`[data-cy=modal]`);
+  }
+
+  static findOrderId() {
+    return cy.get(`[data-cy=order-id]`);
   }
 }

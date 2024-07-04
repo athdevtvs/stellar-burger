@@ -27,7 +27,7 @@ export class Constructor {
     return cy.get('[data-cy="constructor-item-bun"]');
   }
 
-  static findItemsWithinConstructor(itemName: string) {
+  static findItemsWithinConstructor(itemName?: string) {
     const constructorItemsSelector =
       '*[data-cy^="constructor-item-"] .constructor-element__text';
 
@@ -46,6 +46,7 @@ export class Constructor {
       );
   }
 
-  //static find;
-  static findTrashOfItemWithinConstructor(itemName: string) {}
+  static findSubmitOrderButton() {
+    return cy.get('[data-cy=submit-order]');
+  }
 }
