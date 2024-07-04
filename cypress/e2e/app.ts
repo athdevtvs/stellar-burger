@@ -11,8 +11,4 @@ export class App {
   static findModal() {
     return cy.get(`[data-cy=modal]`);
   }
-
-  static findOrderId() {
-    return cy.get(`[data-cy=order-id]`);
-  }
 }
