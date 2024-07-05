@@ -9,7 +9,7 @@ type TIngredientState = {
   status: RequestStatus;
 };
 
-const initialState: TIngredientState = {
+export const initialState: TIngredientState = {
   data: [],
   isLoading: false,
   status: RequestStatus.Idle
@@ -45,4 +45,8 @@ export const ingredientsSlice = createSlice({
 });
 
 export const selectorIngredients = ingredientsSlice.selectors;
-//const { selectorIngredientsData, selectIsLoading } = ingredientsSlice.selectors;
+export const {
+  selectorIngredientsData,
+  selectorIngredientsStatus,
+  selectorIsLoading
+} = ingredientsSlice.selectors;

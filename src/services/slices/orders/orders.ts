@@ -7,7 +7,7 @@ interface IOrdersState {
   request: boolean;
 }
 
-const initialState: IOrdersState = {
+export const initialState: IOrdersState = {
   orders: [],
   request: false
 };
